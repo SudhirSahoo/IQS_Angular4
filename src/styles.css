@@ -1,0 +1,60 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* bootstrap overrides */
+.navbar {
+    margin-bottom: 20px;
+}
+
+div.card > table.table,
+div.card > div.table-responsive > table.table,
+div.collapse > div.table-responsive > table.table,
+div.tab-pane > div.table-responsive > table.table{
+    margin-bottom: 0;
+}
+
+.card-link {
+    color: #0052CC;
+}
+
+.card-link:hover {
+    cursor: pointer;
+}
+
+.btn, .nav-link {
+    cursor: pointer;
+}
+
+h1 > small,
+h2 > small,
+h3 > small,
+h4 > small,
+h5 > small,
+h6 > small {
+    font-size: 50%;
+}
+
+/* angular validation styles */
+.ng-valid[required],
+.ng-valid.required {
+    border-left: 5px solid #42A948; /* green */
+}
+
+.ng-invalid:not(form) {
+    border-left: 5px solid #a94442; /* red */
+}
+
+/* css fixes for ng2-mydatepicker */
+my-date-picker.ng-valid[required] > div.mydp > div.selectiongroup > input,
+my-date-picker.ng-valid.required > div.mydp > div.selectiongroup > input {
+    border-left: 5px solid #42A948; /* green */
+}
+
+my-date-picker.ng-invalid:not(form) > div.mydp >div.selectiongroup > input {
+    border-left: 5px solid #a94442; /* red */
+}
+
+my-date-picker.ng-valid[required],
+my-date-picker.ng-invalid.required,
+my-date-picker.ng-invalid {
+    border-left: none;
+}

@@ -1,0 +1,79 @@
+<div class="card">
+  <h3 class="card-header">Inspection</h3>
+  <!-- search and create block -->
+  <div class="card-body">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                      </span>
+                  </div>
+                  <input #searchBox id="searchBox" class="form-control" (keyup)="search(searchBox.value)"
+                         placeholder="Search by name"/>
+                  <div class="input-group-append">
+                      <button class="btn btn-primary" title="Reset search terms." (click)="Reset(searchBox.value)"
+                              [disabled]="!searchBox.value">
+                          <i class="fa fa-refresh" aria-hidden="true"></i>
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <div class="col">
+              <button class="btn btn-success float-right" title="Create new Contact." (click)="create()">
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> New Inspection
+              </button>
+          </div>
+      </div>
+  </div>
+  <!-- table block -->
+  <div class="card-body">
+      <div id="tableInspections" class="table-responsive">
+          <table class="table table-sm table-striped table-bordered">
+              <thead>
+              <tr>
+                  <th>Inspection Name</th>
+                  <th>Inspection Description</th>
+                  <th>Department</th>
+                  <th>Model</th>
+                  <th>Display Order</th>
+                  <th class="text-center" colspan="2">Action</th>
+              </tr>
+              </thead>
+              <tbody *ngIf="inspectionList else noRecords">
+              <tr *ngFor="let inspection of inspectionList">
+                  <td>{{inspection.inspectionName}}</td>
+                  <td>{{inspection.inspectionDescription}}</td>
+                  <td>{{inspection.departmentName}}</td>
+                  <td>{{inspection.modelName}}</td>
+                  <td>{{inspection.displayOrder}}</td>
+                  <td>
+                      <button class="btn btn-success btn-sm btn-block" title="Update Inspection"
+                              (click)="update(Contact)">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                  </td>
+                  
+                  <td *ngIf="true">
+                      <button class="btn btn-danger btn-sm btn-block"
+                              title="Delete Inspection"
+                              (click)="delete(inspection)">
+                          <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </button>
+                  </td>
+              </tr>
+              </tbody>
+              <ng-template #noRecords>
+                  <tbody>
+                  <tr>
+                      <td class="text-center" colspan="7">
+                          <strong>No records found {{searchBox.value}}.</strong>
+                      </td>
+                  </tr>
+                  </tbody>
+              </ng-template>
+          </table>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,35 @@
+<div class="card" *ngIf="model">
+    <h3 class="card-header">Update Department</h3>
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #departmentForm="ngForm">
+            <!-- departmentName required text input -->
+            <div class="form-group">
+                <label for="departmentNumber">departmentNumber</label>
+                <input type="text" class="form-control"
+                       required
+                       id="departmentNumber"
+                       departmentNumber="departmentNumber"
+                       [(ngModel)]="model.name"
+                       #departmentNumber="ngModel">
+                <div [hidden]="departmentNumber.valid || departmentNumber.pristine" class="text-danger">
+                    <strong>* Department_Number is required!</strong>
+                </div>
+            </div>
+            <!-- Description textarea -->
+            <div class="form-group">
+                <label for="departmentName">Department_Name</label>
+                <textarea class="form-control"
+                          id="departmentName"
+                          name="departmentName"
+                          [(ngModel)]="model.departmentName">
+                </textarea>
+            </div>
+            <button type="button" class="btn" (click)="goBack()">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+            </button>
+            <button type="submit" class="btn btn-success" [disabled]="!departmentForm.form.valid">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+            </button>
+        </form>
+    </div>
+</div>

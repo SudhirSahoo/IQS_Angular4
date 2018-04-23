@@ -1,0 +1,51 @@
+.floating-box {
+    display: inline-block;
+    width: 70px;
+    height: 210px;
+    margin: 1px;
+    color: Black;  
+}
+
+.after-box {
+    border: 3px solid red; 
+}
+
+.Btn-groupMinus button {
+    border: 2px solid black; /* black border */
+    display: block;
+	height: 64px; 
+	width: 53px;
+	font-weight: bold; 
+	font-size: x-large; 
+	font-style: normal;
+}
+.Btn-groupMinus button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+ }   
+.Btn-groupPlus button {
+    border: 2px solid black; /* black border */
+    display: block;
+	height: 64px; 
+	width: 53px;
+	font-weight: bold; 
+	font-size: x-large; 
+	font-style: normal;
+	}
+.Btn-groupPlus button:not(:last-child) {
+    border-bottom: none; /* Prevent double borders */
+} 
+
+.Text-groupCount input1 {
+    border: 2px solid black; /* black border */
+	display: block;
+	width: 53px; 
+	height: 58px; 
+	font-weight: bold; 
+	font-size: x-large; 
+	font-style: normal;
+	background-color: #FFFFE1;
+}
+.Text-groupCount text {
+    border-bottom: none; /* Prevent double borders */
+
+}

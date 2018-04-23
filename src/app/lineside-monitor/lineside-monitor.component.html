@@ -1,0 +1,19 @@
+<div id="filter" class="container">
+      <div class="row moveright">
+			<div *ngFor="let models of modelsList">
+				<div *ngIf="models.modelName.trim() == 'Odyssey' ">
+					{{ models.modelName }} <input type="radio" name="modelRadioGroup" value="{{models.id}}" checked (click)="changeCountByModel(models.id)">
+				</div>
+				<div class="moveright" *ngIf="models.modelName.trim() != 'Odyssey' ">
+					{{ models.modelName }} <input type="radio" name="modelRadioGroup" value="{{models.id}}" (click)="changeCountByModel(models.id)">
+				</div>
+				<div class="notsotall">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </div>
+			</div>
+      </div>
+</div>
+
+<div class="wrapper">
+        <div class="box" *ngFor="let inspection of inspectionList let index=index; let odd=odd; let even=even">
+           <app-lineside-inspection [inspect]="inspection"></app-lineside-inspection>
+        </div>
+</div>

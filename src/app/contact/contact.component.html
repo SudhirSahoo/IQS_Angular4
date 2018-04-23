@@ -1,0 +1,98 @@
+<div class="card">
+  <h3 class="card-header">Contact</h3>
+  <!-- search and create block -->
+  <div class="card-body">
+      <div class="row">
+          <div class="col-md-4">
+              <div class="input-group">
+                  <div class="input-group-prepend">
+                      <span class="input-group-text">
+                          <i class="fa fa-search" aria-hidden="true"></i>
+                      </span>
+                  </div>
+                  <input #searchBox id="searchBox" class="form-control" (keyup)="search(searchBox.value)"
+                         placeholder="Search by name"/>
+                  <div class="input-group-append">
+                      <button class="btn btn-primary" title="Reset search terms." (click)="Reset(searchBox.value)"
+                              [disabled]="!searchBox.value">
+                          <i class="fa fa-refresh" aria-hidden="true"></i>
+                      </button>
+                  </div>
+              </div>
+          </div>
+          <div class="col">
+              <button class="btn btn-success float-right" title="Create new Contact." (click)="create()">
+                  <i class="fa fa-plus-circle" aria-hidden="true"></i> New Contact
+              </button>
+          </div>
+      </div>
+  </div>
+  <!-- table block -->
+  <div class="card-body">
+      <div id="tableContacts" class="table-responsive">
+          <table class="table table-sm table-striped table-bordered">
+              <thead>
+              <tr>
+                  <th>Contact Name</th>
+                  <th>Department Name</th>
+                  <th>Email</th>
+                  <th>Carrier</th>
+                  <th>Team</th>
+                  <th>AnytimeContact</th>
+                  <th>Active</th>
+                  <th class="text-center" colspan="2">Actions</th>
+              </tr>
+              </thead>
+              <tbody *ngIf="showTable; else noRecords">
+              <tr *ngFor="let Contact of Contact">
+                  <td>{{Contact.ContactName}}</td>
+                  <td class="card-link" [routerLink]="['/department/update', Contact.departmentId]">
+                      <i class="fa fa-pencil" aria-hidden="true"></i> {{Contact.DepartmentName?.DepartmentName}}
+                  </td>
+<!--                   <td>{{Contact.contact_Name}}</td> -->
+<!--                   <td>{{Contact.Department_Name}}</td> -->
+                  <td>{{Contact.Contactemail}}</td>
+<!--                   <td>{{Contact.Carrier_Name}}</td> -->
+                  <td class="card-link" [routerLink]="['/contact/contact-update/update', Contact.CarrierName]">
+                      <i class="fa fa-pencil" aria-hidden="true"></i> {{Contact.CarrierName?.CarrierName}}
+                  </td>
+                  <td>{{Contact.Team}}</td>
+                  <td>{{Contact.AnytimeContact}}</td>
+                  <td>{{Contact.Active}}</td>
+                  <td>
+                      <button class="btn btn-success btn-sm btn-block" title="Update Contact."
+                              (click)="update(Contact)">
+                          <i class="fa fa-pencil" aria-hidden="true"></i>
+                      </button>
+                  </td>
+                  <!-- TODO: Update condition to disable delete button-->
+                  <td *ngIf="false">
+                      <button class="btn btn-danger btn-sm btn-block"
+                              title="This record cannot be deleted because it is referenced by at least one other record."
+                              disabled>
+                          <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </button>
+                  </td>
+                  <!-- TODO: Update condition to enable delete button-->
+                  <td *ngIf="true">
+                      <button class="btn btn-danger btn-sm btn-block"
+                              title="Delete associate."
+                              (click)="delete(associate)">
+                          <i class="fa fa-trash-o" aria-hidden="true"></i>
+                      </button>
+                  </td>
+              </tr>
+              </tbody>
+              <ng-template #noRecords>
+                  <tbody>
+                  <tr>
+                      <td class="text-center" colspan="7">
+                          <strong>No records found {{searchBox.value}}.</strong>
+                      </td>
+                  </tr>
+                  </tbody>
+              </ng-template>
+          </table>
+      </div>
+  </div>
+</div>

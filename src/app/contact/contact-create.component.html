@@ -1,0 +1,84 @@
+<div class="card">
+    <h3 class="card-header">Add New Contact</h3>
+    <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+            <!-- Department drop down list selector -->
+            <div class="form-group">
+                <label for="department">Department</label>
+                <select class="form-control"
+                        required
+                        id="department"
+                        name="department"
+                        [(ngModel)]="model.departmentId"
+                        #department="ngModel">
+                    <option *ngFor="let department of departments" value="{{department.departmentId}}">
+                        {{department.description}}
+                    </option>
+                </select>
+                <div [hidden]="department?.valid || department?.pristine" class="text-danger">
+                    <strong>* Department is required!</strong>
+                </div>
+            </div>
+            <!-- Associate Number required text input -->
+            <div class="form-group">
+                <label for="contactNumber">contactNumber</label>
+                <input type="text" class="form-control"
+                       required
+                       id="contactNumber"
+                       name="contactNumber"
+                       [(ngModel)]="model.contactNumber"
+                       #contactNumber="ngModel">
+                <div [hidden]="contactNumber.valid || contactNumber.pristine" class="text-danger">
+                    <strong>* Contact Number is required!</strong>
+                </div>
+            </div>
+            <!-- Name required text input -->
+            <div class="form-group">
+                <label for="name">Contact Name</label>
+                <input type="text" class="form-control"
+                       required
+                       id="contactName"
+                       name="contactName"
+                       [(ngModel)]="model.contactName"
+                       #contactName="ngModel">
+                <div [hidden]="contactName.valid || contactName.pristine" class="text-danger">
+                    <strong>* Name is required!</strong>
+                </div>
+            </div>
+            <!-- Email required text input -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="text" class="form-control"
+                       required
+                       id="email"
+                       name="email"
+                       [(ngModel)]="model.email"
+                       #email="ngModel">
+                <div [hidden]="email.valid || email.pristine" class="text-danger">
+                    <strong>* Email is required!</strong>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="team">Team</label>
+                <input type="text" class="form-control"
+                       required
+                       id="team"
+                       name="team"
+                       [(ngModel)]="model.team"
+                       #team="ngModel">
+                <div [hidden]="team.valid || team.pristine" class="text-danger">
+                    <strong>* Team is required!</strong>
+                </div>
+            </div>
+            <button type="button" class="btn" (click)="goBack()">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i> Back
+            </button>
+            <button type="button" class="btn btn-warning" (click)="reset()">
+                <i class="fa fa-refresh" aria-hidden="true"></i> Reset Form
+            </button>
+            <button type="submit" class="btn btn-success" [disabled]="!contactForm.form.valid">
+                <i class="fa fa-floppy-o" aria-hidden="true"></i> Save
+            </button>
+        </form>
+    </div>
+</div>

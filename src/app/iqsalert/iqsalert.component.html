@@ -1,0 +1,7 @@
+<iqsalertfilter-component></iqsalertfilter-component>
+
+
+<div *ngFor="let priority of priorityList; let index=index; let odd=odd; let even=even">
+<div [ngClass]="{ odd: odd, even: even }"> {{index}} <iqs-priority-component></iqs-priority-component>   </div>
+</div>
+

@@ -1,0 +1,79 @@
+<nav class="navbar navbar-expand-xl navbar-light bg-light">
+    <a class="navbar-brand" href="#">
+        <img src="/assets/brand/sk-logo.svg" alt="IQS" height="30px">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" routerLink="/home" routerLinkActive="active">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    Alert
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" routerLink="/linesidemonitor">IQS Alert</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    Configuration
+                </a>
+            
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" routerLink="/contact">Contacts</a>
+                        <a class="dropdown-item" routerLink="/department">Departments</a>
+                        <a class="dropdown-item" routerLink="/notificationlevel">NotificationLevels</a>
+                        <a class="dropdown-item" routerLink="/inspection">Inspection</a>
+                        </div>
+            </li>
+            <!--  <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    Departments
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" routerLink="/department">Search</a>
+                    <a class="dropdown-item" routerLink="/department/create">New</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    Priorities
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" routerLink="/priority">Search</a>
+                    <a class="dropdown-item" routerLink="/priority/create">New</a>
+                </div>
+            </li>
+            <li class="nav-item dropdown" routerLinkActive="active">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    Tags
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" routerLink="/tag">Search</a>
+                    <a class="dropdown-item" routerLink="/tag/create">New</a>
+                </div>
+            </li> -->
+        </ul>
+        <ul class="navbar-nav mt-2 mt-md-0">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                   aria-expanded="false">
+                    <i class="fa fa-user" aria-hidden="true"></i> Welcome, {{associate?.name}}!
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                   
+                    <a class="nav-link dropdown-item" (click)="logout()">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>

@@ -1,0 +1,94 @@
+<div class="card">
+    <h3 class="card-header">Department List</h3>
+    <!-- search and create block -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <input #searchBox id="search-box" class="form-control" (keyup)="search(searchBox.value)"
+                           placeholder="Search by department"/>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" title="Reset search terms."
+                                (click)="resetSearch(searchBox)"
+                                [disabled]="!searchBox.value">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <button class="btn btn-success float-right" title="Create new department." (click)="create()">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> New Department
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- table block -->
+    <div class="card-body">
+        <div id="tableDepartments" class="table-responsive">
+            <table class="table table-sm table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Department Number</th>
+                    <th>Department Name</th>
+                    <th>Contact Name</th>
+                    <th>Quality Contact</th>
+                    <th>Location Name</th>
+                    <th>Facility Name</th>
+                    <th>Plant Name</th>
+                    <th>Zone Name</th>
+                    <th>Active</th>
+                    <th class="text-center" colspan="2">Actions</th>
+                </tr>
+                </thead>
+                <tbody *ngIf="showTable; else noRecords">
+                <tr *ngFor="let department of departments">
+                    <td>{{departments.Department_Number}}</td>
+                    <td>{{department.Department_name}}</td>
+                    <td>{{departments.Contact_ID}}</td>
+                    <td>{{departments.Quality_Contact_ID}}</td>
+                    <td>{{departments.Location_ID}}</td>
+                    <td>{{departments.Facility_ID</td>
+                    <td>{{departments.Plant_Id}}</td>
+                    <td>{{departments.Zone_ID}}</td>
+                    <td>{{departments.Active}}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm btn-block" title="Update department."
+                                (click)="update(department)">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                    <td *ngIf="(department.associates?.length > 0)">
+                        <button class="btn btn-danger btn-sm btn-block"
+                                title="This department cannot be deleted because it is referenced by at least one associate."
+                                disabled>
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                    <td *ngIf="(!department.associates || department.associates?.length === 0)">
+                        <button class="btn btn-danger btn-sm btn-block"
+                                title="Delete department."
+                                (click)="delete(department)">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <ng-template #noRecords>
+                    <tbody>
+                    <tr>
+                        <td class="text-center" colspan="4">
+                            <strong>No records found{{searchBox.value}}.</strong>
+                        </td>
+                    </tr>
+                    </tbody>
+                </ng-template>
+            </table>
+        </div>
+    </div>
+</div>

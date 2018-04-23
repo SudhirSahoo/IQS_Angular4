@@ -1,0 +1,50 @@
+<div class="container">
+        <div class="softcontainer">
+        <div class="row">
+
+        		
+                <div class="card cardoverride col-2">
+                    <div class="card-body cardoverride cardheight lefttext">
+                       <div> {{inspect.inspectionName}} </div>   
+                </div>
+                </div>
+                <div class="card cardoverride col-2" >
+                    <div class="card-body cardoverride cardheight lefttext">
+                       <div> {{inspect.inspectionDescription}} </div>   
+                    </div>
+                </div>
+            <div class="card cardoverride bg light col-4">
+                    <a href="assets/{{inspect.id}}.jpg" data-lightbox="image" data-title="inspect.inspectionDescription">
+                    	<img class="align-self-center ui bordered small image margin radius" src="assets/{{inspect.id}}.jpg" width="120px" height="80px">    
+                    </a>
+                    
+                    
+                    <div class="card-body cardoverride"> 
+                            
+                            <div class="row">
+                                    <div ><span class="centertext">Total count: </span>{{inspect.rankAcount + inspect.rankBcount + inspect.rankCcount}}</div>
+                            </div>
+                    </div>
+                        
+            </div>
+        
+
+            <div class="card cardoverride bg light col-4" >
+                <div class="card-body cardoverride cardheight">
+                    <table class="centertable">
+                            <tr>
+                                   <td><a [routerLink]="" (click)="updateCount(inspect, 'A', 'M')" class="btn btn-success">-</a></td>
+                                   <td>{{inspect.rankAcount}}</td>
+                                   <td><a [routerLink]="" (click)="updateCount(inspect, 'A', 'P')" class="btn btn-danger">+</a></td>
+                            </tr>
+                            
+
+
+
+                    </table>
+                </div>
+            </div>
+            </div>
+    </div>
+</div>
+

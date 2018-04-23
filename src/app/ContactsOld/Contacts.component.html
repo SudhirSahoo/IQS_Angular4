@@ -1,0 +1,106 @@
+<div class="card">
+    <h3 class="card-header">Contacts</h3>
+    <!-- search and create block -->
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-search" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                    <input #searchBox id="search-box" class="form-control" (keyup)="search(searchBox.value)"
+                           placeholder="Search by name"/>
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" title="Reset search terms."
+                                (click)="resetSearch(searchBox)"
+                                [disabled]="!searchBox.value">
+                            <i class="fa fa-refresh" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div class="col">
+                <button class="btn btn-success float-right" title="Create new Contacts." (click)="create()">
+                    <i class="fa fa-plus-circle" aria-hidden="true"></i> New Contacts
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- table block -->
+    <div class="card-body">
+        <div id="tableContacts" class="table-responsive">
+            <table class="table table-sm table-striped table-bordered">
+                <thead>
+                <tr>
+                    <th>Contact Associate Number</th>
+                    <th>Department</th>
+                    <th>Contact Name</th>
+                    <th>Contact email</th>
+                    <th>Contact Mobile Phone</th>
+                    <th>Mobile Carrier</th>
+                    <th>Zone</th>
+                    <th>Location</th>
+                    <th>Facility</th>
+                    <th>Plant</th>
+                    <th>Shift</th>
+                    <th>Anytime Contact</th>
+                    <th>Active</th>
+                    <th class="text-center" colspan="2">Actions</th>
+                </tr>
+                </thead>
+                <tbody *ngIf="showTable; else noRecords">
+                <tr *ngFor="let Contacts of Contacts">
+                    <td>{{Contacts.Contact_Number}}</td>
+                    <td class="card-link" [routerLink]="['/department/update', Contacts.department_Id]">
+                        <i class="fa fa-pencil" aria-hidden="true"></i> {{Contacts.department?.name}}
+                    </td>
+                    <td>{{Contacts.Contact_name}}</td>
+                    <td>{{Contacts.Contact_email}}</td>
+                    <td>{{Contacts.Contact_phone_Number}}</td>
+                    <td>{{Contacts.Carrier_ID}}</td>
+                    <td>{{Contacts.Zone_ID}}</td>
+                    <td>{{Contacts.Location_Id}}</td>
+                    <td>{{Contacts.Facility_ID}}</td>
+                    <td>{{Contacts.Plant_ID}}</td>
+                    <td>{{Contacts.shift_ID}}</td>
+                    <td>{{Contacts.AnytimeContact}}</td>
+                    <td>{{Contacts.Active}}</td>
+                    <td>
+                        <button class="btn btn-success btn-sm btn-block" title="Update Contacts."
+                                (click)="update(Contacts)">
+                            <i class="fa fa-pencil" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                    <!-- TODO: Update condition to disable delete button-->
+                    <td *ngIf="false">
+                        <button class="btn btn-danger btn-sm btn-block"
+                                title="This record cannot be deleted because it is referenced by at least one other record."
+                                disabled>
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                    <!-- TODO: Update condition to enable delete button-->
+                    <td *ngIf="true">
+                        <button class="btn btn-danger btn-sm btn-block"
+                                title="Delete Contacts."
+                                (click)="delete(Contacts)">
+                            <i class="fa fa-trash-o" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <ng-template #noRecords>
+                    <tbody>
+                    <tr>
+                        <td class="text-center" colspan="7">
+                            <strong>No records found{{searchBox.value | formatSearchTerms}}.</strong>
+                        </td>
+                    </tr>
+                    </tbody>
+                </ng-template>
+            </table>
+        </div>
+    </div>
+</div>

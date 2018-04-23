@@ -1,0 +1,14 @@
+  .wrapper {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-gap: 10px;
+    background-color: #fff;
+    color: #444;
+  }
+.notsotall{
+	height: 10px;
+}
+
+.moveright{
+	padding-left:50px;
+}
